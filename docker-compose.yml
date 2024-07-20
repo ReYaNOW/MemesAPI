@@ -1,0 +1,68 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpass
+      POSTGRES_DB: pgdb
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+    container_name: memesapi_db
+    ports:
+      - 5434:5432
+
+
+  minio-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: minio-api
+    container_name: minio-api
+    environment:
+      MINIO_SERVER_SECURE: False
+    env_file:
+      - .env
+    command: 'python3 main.py'
+    ports:
+      - 8081:8081
+    depends_on:
+        - minio
+
+  minio:
+    image: minio/minio
+    volumes:
+      - minio_volume:/data
+    env_file:
+      - .env
+    command: server --address ":9000" --console-address ":9001" /data
+    ports:
+      - 9001:9001
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: web
+    command: 'make start'
+    environment:
+      DATABASE_URL: postgresql+asyncpg://pguser:pgpass@db:5432/pgdb
+      MAIN_SERVER_URL: http://web:8000
+      PRIVATE_SERVER_URL: http://minio-api:8081
+    env_file:
+      - .env
+    container_name: memesapi_web
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+      - minio
+      - minio-api
+    profiles:
+      - full
+
+volumes:
+  postgres_volume:
+  minio_volume:
