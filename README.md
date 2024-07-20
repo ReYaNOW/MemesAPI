@@ -1,4 +1,7 @@
 [![Linter check](https://github.com/ReYaNOW/MemesAPI/actions/workflows/linter_check.yml/badge.svg)](https://github.com/ReYaNOW/MemesAPI/actions/workflows/linter_check.yml)
+[![Run tests](https://github.com/ReYaNOW/MemesAPI/actions/workflows/run_tests.yml/badge.svg)](https://github.com/ReYaNOW/MemesAPI/actions/workflows/run_tests.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f1c3173e996e7a7b12ef/maintainability)](https://codeclimate.com/github/ReYaNOW/MemesAPI/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f1c3173e996e7a7b12ef/test_coverage)](https://codeclimate.com/github/ReYaNOW/MemesAPI/test_coverage)
 
 ## Описание
 Тестовое задание для некой компании
