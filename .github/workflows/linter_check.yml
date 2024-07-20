@@ -14,4 +14,4 @@ jobs:
           pip install ruff
       - name: Run linter
         run: |
-          make lint
+          ruff check
