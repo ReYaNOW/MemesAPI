@@ -72,7 +72,7 @@ make compose-dev
 1. Склонировать репозиторий
 
 ```
-git clone https://github.com/ReYaNOW/avito-tech-test-task.git
+git clone https://github.com/ReYaNOW/MemesAPI.git
 ```
 
 2. Перейти в директорию проекта и переименовать .env.example в .env
