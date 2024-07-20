@@ -18,17 +18,16 @@
 Стек: Python3.11, FastApi, SqlAlchemy, Alembic, Asyncpg, Pytest, Docker, Minio
 
 ## Документация
-Открыть документацию можно по GGGGG[ссылке](https://test-task-avito-tech.onrender.com/docs)  
+Открыть swagger документацию можно на http://127.0.0.1:8000/docs после развертывания
 Там же можно поделать запросы к веб-приложению
 
 # Использование
 
 
- - Открыть задеплоенный [тестовый вариант](https://avito-tech-test-task.onrender.com)
- - [Развернуть сервис с Docker](#Как-развернуть-сервис-с-Docker)  
- - [Развернуть сервис полностью в Docker](#Как-развернуть-полностьЮ-в-Docker)
+ - [Развернуть веб-приложению с Docker](#Как-развернуть-сервис-с-Docker)  
+ - [Развернуть веб-приложению полностью в Docker](#Как-развернуть-полностью-в-Docker)
 
-![App previeффффффw](https://github.com/ReYaNOW/ReYaNOW/blob/main/Images/stats_preview_imgффффф.png?raw=true)
+![App preview](https://github.com/ReYaNOW/ReYaNOW/blob/main/Images/meme_preview2.png?raw=true)
 
 ## Как развернуть сервис с Docker
 Для этого необходим [Poetry](https://python-poetry.org/docs/#installing-with-pipx)  
@@ -58,7 +57,7 @@ make compose-install
 poetry install
 ```
 
-5. Запустить локальный сервер и открыть http://127.0.0.1:8080
+5. Запустить локальный сервер и открыть http://127.0.0.1:8000/docs
   
 ```
 make dev
@@ -91,7 +90,7 @@ mv .env.example .env
 make compose-install
 ```
 
-4. запустить все контейнеры и открыть http://127.0.0.1:8080
+4. запустить все контейнеры и открыть http://127.0.0.1:8000/docs
   
 ```
 make compose-full-start
