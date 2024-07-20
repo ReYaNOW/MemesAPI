@@ -29,6 +29,7 @@ jobs:
 
       - name: Build and test with Docker Compose
         run: |
+          mv .env.example .env
           make compose-install
           poetry install
           make test
