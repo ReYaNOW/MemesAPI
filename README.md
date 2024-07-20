@@ -1,4 +1,4 @@
-[![Linter check](https://github.com/ReYaNOW/avito-tech-test-task/actions/workflows/pyci.yml/badgeфффффффффффффффффффф.svg)](https://github.com/ReYaNOW/avito-tech-test-task/actions/workflows/pyci.yml)
+[![Linter check](https://github.com/ReYaNOW/MemesAPI/actions/workflows/linter_check.yml/badge.svg)](https://github.com/ReYaNOW/MemesAPI/actions/workflows/linter_check.yml)
 
 ## Описание
 Тестовое задание для некой компании
@@ -82,7 +82,7 @@ cd MemesAPI
 mv .env.example .env
 ```
 
-3. собрать необходимые docker образы и применить миграции к БД
+3. Собрать необходимые Docker образы, применить миграции к БД, запустив перед этим необходимые Docker контейнеры
   
 ```
 make compose-install
