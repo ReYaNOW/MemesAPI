@@ -13,11 +13,13 @@ services:
 
   test-minio-api:
     build:
-      context: ./minio_microservice
+      context: .
       dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: minio-api
     container_name: test-minio-api
     environment:
-      MINIO_SERVER_ENDPOINT: minio:5000
+      MINIO_SERVER_ENDPOINT: test-minio:5000
       MINIO_SERVER_SECURE: False
     env_file:
       - .test.env
@@ -25,9 +27,9 @@ services:
     ports:
       - 5081:5081
     depends_on:
-        - minio
+        - test-minio
 
-  minio:
+  test-minio:
     image: minio/minio
     container_name: test-minio-server
     env_file:
