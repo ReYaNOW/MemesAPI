@@ -40,8 +40,9 @@ jobs:
           poetry install
           make test
 
-      - name: Install pytest-coverage
+      - name: Prepare for Test-Coverage
         run: |
+          docker compose -f docker-compose-test.yml up -d
           pip install pytest-cov
 
       - name: Test & publish code coverage
