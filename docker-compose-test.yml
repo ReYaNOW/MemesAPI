@@ -1,0 +1,35 @@
+services:
+  test-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpass
+      POSTGRES_DB: pgdb
+      POSTGRES_HOST_AUTH_METHOD: trust
+      PGPORT: 5500
+    container_name: test_memesapi_db
+    ports:
+      - 5500:5500
+
+  test-minio-api:
+    build:
+      context: ./minio_microservice
+      dockerfile: Dockerfile
+    container_name: test-minio-api
+    environment:
+      MINIO_SERVER_ENDPOINT: minio:5000
+      MINIO_SERVER_SECURE: False
+    env_file:
+      - .test.env
+    command: 'python3 main.py'
+    ports:
+      - 5081:5081
+    depends_on:
+        - minio
+
+  minio:
+    image: minio/minio
+    container_name: test-minio-server
+    env_file:
+      - .test.env
+    command: server --address ":5000" /data
