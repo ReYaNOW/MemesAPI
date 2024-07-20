@@ -32,16 +32,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-docker-
 
-      - name: Build and test with Docker Compose
+      - name: Preparation for Test-Coverage
         run: |
           mv .env.example .env
           make compose-install
           pip install poetry
           poetry install
-          make test
-
-      - name: Prepare for Test-Coverage
-        run: |
           docker compose -f docker-compose-test.yml up -d
           pip install pytest-cov
 
@@ -51,5 +47,5 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: poetry run pytest --cov --cov-report term-missing --cov-report xml
+          coverageCommand: poetry run pytest -vv -s --cov --cov-report term-missing --cov-report xml
           debug: true
