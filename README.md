@@ -44,19 +44,19 @@ git clone https://github.com/ReYaNOW/MemesAPI.git
 ```
 cd MemesAPI
 mv .env.example .env
-```
-  
-3. Собрать необходимые Docker образы, применить миграции к БД, запустив перед этим необходимые Docker контейнеры
-  
-```  
-make compose-install
 ```  
   
-4. Установить Python зависимости
+3. Установить Python зависимости
   
 ```
 poetry install
 ```
+  
+4. Собрать необходимые Docker образы, применить миграции к БД, запустив перед этим необходимые Docker контейнеры
+  
+```  
+make compose-install
+```  
 
 5. Запустить локальный сервер и открыть http://127.0.0.1:8000/docs
   
