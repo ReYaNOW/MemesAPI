@@ -31,5 +31,6 @@ jobs:
         run: |
           mv .env.example .env
           make compose-install
+          pip install poetry
           poetry install
           make test
