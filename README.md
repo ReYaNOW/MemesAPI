@@ -105,15 +105,3 @@ make compose-full-start
 ```
 make test
 ```
-
-3. Собрать необходимые Docker образы, применить миграции к БД, запустив перед этим необходимые Docker контейнеры
-  
-```
-make compose-install
-```
-
-4. запустить все контейнеры и открыть http://127.0.0.1:8000/docs
-  
-```
-make compose-full-start
-```
